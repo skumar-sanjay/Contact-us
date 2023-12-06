@@ -1,0 +1,231 @@
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta httpequiv="" X-UA-Compatible" content="IE=Edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+
+
+
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        .container {
+            width: 1100px !important;
+        }
+
+        p {
+            font-size: 17px;
+        }
+
+        h2 {
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+        }
+
+        .form-control {
+            height: 36px;
+            background-color: #fff;
+            color: rgba(0, 00, 0.8);
+            font-size: 16px;
+            border-radius: 2px;
+            box-shadow: 0.cap;
+            border: 1px solid rgba(0, 0, 0, 0.8);
+        }
+
+        .form-control:hover {
+            background-color: aliceblue;
+        }
+
+        .contextform .form-control {
+            border: none;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.8);
+            padding: 0;
+        }
+
+        .form-control:focus,
+        .form-control:active {
+            border-color: #2130d1 !important;
+        }
+
+        .btn .btn-primary {
+            background-color: #01d28e !important;
+            border-color: #01d28e !important;
+            color: white;
+            width: 100px;
+            border-radius: 0px !important;
+
+        }
+
+        .btn-primary:hover {
+            background-color: #3b49df !important;
+        }
+
+        .bi {
+            font-size: 35px;
+        }
+
+        @media only screen and(max-width:600px) {
+            .container {
+                width: 1000!important;
+            }
+        }
+
+        .err{
+            color: red;
+        }
+    </style>
+
+    <script>
+        function tovalidate(firstname, lastname, subject, eemail, inputCity, contact, spfname, splname, spsubject, spemail, spcity, spnumber) 
+        {
+            var result = true;
+            var fname, lname, sub, mail, city, mob, x;
+            //reading values in variable
+            fname = firstname.value.trim();
+            lname = lastname.value.trim();
+            sub = subject.value.trim();
+            mail = eemail.value.trim();
+            city = inputCity.value.trim();
+            mob = contact.value.trim();
+            //clearing all previus massages
+            var sp = document.getElementsByClassName("err");
+            for (x =0; x< sp.length;x++) {
+                sp[x].innerText = "";
+            }
+            //validating name 
+            if (fname.length == 0) {
+                spfname.innerText = "Enter your first name.";
+                result = false;
+            }
+            else if (fname.length < 3) {
+                spfname.innerText = "Please enter minimum 3 characters";
+                result = false;
+            }
+            
+            
+            //validating lastname
+            if (lname.length == 0) {
+                splname.innerText = "Enter your lastname.";
+                result = false;
+            }
+            else if (lname.length < 3) {
+                splname.innerText = "Please enter minimum 3 characters";
+                result = false;
+            }
+            
+            
+            //validating subject
+            if (sub.length == 0) {
+                spsubject.innerText = "Please enter your subject";
+                result = false;
+            }
+            //validating email id
+            if (mail.length == 0) {
+                spemail.innerText = "Please enter your email id";
+                result = false;
+            }
+            //validate your city
+            if (city.length == 0) {
+                spcity.innerText = "Enter your city";
+                result = false;
+            }
+            //validate contact
+            if (mob.length == 0) {
+                spnumber.innerText = "enter your contact number";
+                result=false;
+            }
+            else if (mob.length != 10) {
+                spnumber.innerText = "Mobile number must have 10 digit.";
+                result = false;
+            }
+            else {
+                var ch = mob.charCodeAt(0);
+                if (!(ch >= 54 && ch <= 57)) {
+                    spnumber.innerText = "first digit must be start from(6,7,8,9)";
+                    result = false;
+                }
+            }
+            return result;
+        }
+    </script>
+
+</head>
+
+<body>
+    <div class="container mt-5 shadow bg-light">
+        <div class="row ">
+            <div class="col-md-4 bg-primary p-5 text-white order-sm-first order-last">
+                <h2>Let's get in touch</h2>
+                <p>We're open for any suggetion or or just to have a chat</p>
+                <div class="d-flex mt-4">
+                    <i class="bi bi-geo-alt"></i>
+                    <p class="mt-0 ms-3">Address: Road 28,Naini Prayagraj Utter-Pradesh</p>
+                </div>
+                <div class="d-flex mt-2">
+                    <i class="bi bi-telephone-forward"></i>
+                    <p class="mt-1 ms-3">Phone: 9670901670</p>
+                </div>
+                <div class="d-flex mt-3">
+                    <i class="bi bi-envelope"></i>
+                    <p class="mt-1 ms-3">Email: sy611117@gmail.com</p>
+                </div>
+                <div class="d-flex mt-3">
+                    <i class="bi bi-youtube"></i>
+                    <p class="mt-1 ms-3"> www.uniteduniversity.com</p>
+                </div>
+            </div>
+            <div class="col-md-8 p-5">
+                <h2>Get in touch</h2>
+                <form class="row g-3 contextform mt-4" action="save.jsp" method="post">
+                    <div class="col-md-6">
+                        <label for="inputfirstname" class="form-label ms-1">First Name</label>
+                        <input type="text" class="form-control" id="firstname" placeholder="Enter your first name">
+                        <span id="spfname" class="err"></span>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="inputlasttext" class="form-label ms-1">Last Name</label>
+                        <input type="text" class="form-control" id="lastname" placeholder="Enter your last name">
+                        <span id="splname" class="err"></span>
+                    </div>
+                    <div class="col-12">
+                        <label for="inputsubject" class="form-label ms-1">Subject</label>
+                        <input type="text" class="form-control" id="subject" placeholder="Enter your subject">
+                        <span id="spsubject" class="err"></span>
+                    </div>
+                    <div class="col-12">
+                        <label for="inputemail" class="form-label ms-1">Email Id</label>
+                        <input type="email" class="form-control" id="eemail" placeholder="Enteryour email address">
+                        <span id="spemail" class="err"></span>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="inputCity" class="form-label ms-1">City</label>
+                        <input type="text" class="form-control" id="inputCity" placeholder="Enter your city">
+                        <span id="spcity" class="err"></span>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="inputCity" class="form-label ms-1">Contact Number</label>
+                        <input type="number" class="form-control" id="contact" placeholder="Enter your contact number">
+                        <span id="spnumber" class="err"></span>
+                    </div>
+                    <div class="col-12">
+                        <input type="submit" value="submit" style="width:70px; border-radius:7px;" class="btn-primary"
+                            onclick="return tovalidate(firstname,lastname,subject,eemail,inputCity,contact,spfname,splname,spsubject,spemail,spcity,spnumber)" />
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+
+ 
+</body>
+
+</html>
